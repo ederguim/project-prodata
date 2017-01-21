@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index-controller.js"></script>
+    <script src="app/services/pd-alert.service.js"></script>
+
+</head>
+<body ng-app="pdProject" class="container">
+
+<div ng-controller="IndexController">
+
+    <form name="formIndex">
+
+        <div class="row">
+
+            <h1>Formulario</h1>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <label>Cadastro de Pessoas</label>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group"
+                                 ng-class="{'has-error' : formIndex.nome.$invalid && formIndex.nome.$touched}">
+
+                                <label class="control-label">Nome</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       ng-model="entidade.nome"
+                                       ng-required="true"
+                                       name="nome"
+                                       id="itNome"
+                                       autofocus>
+
+                                <div ng-messages="formIndex.nome.$error"
+                                     ng-if="formIndex.nome.$invalid && formIndex.nome.$touched">
+                                    <div ng-messages-include="app/templates/messages.html"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group"
+                                 ng-class="{'has-error' : formIndex.sobrenome.$invalid && formIndex.sobrenome.$touched}">
+
+                                <label class="control-label">Sobrenome</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       ng-model="entidade.sobrenome"
+                                       name="sobrenome"
+                                       ng-required="true">
+
+                                <div ng-messages="formIndex.sobrenome.$error"
+                                     ng-if="formIndex.sobrenome.$invalid && formIndex.sobrenome.$touched">
+                                    <div ng-messages-include="app/templates/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label>Sexo</label>
+
+                                <select class="form-control" ng-model="entidade.sexo">
+                                    <option ng-selected="true" value="">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group"
+                                 ng-class="{'has-error' : formIndex.data.$invalid && formIndex.data.$touched}">
+
+                                <label class="control-label">Endereço</label>
+
+                                <input type="date"
+                                       class="form-control"
+                                       ng-model="entidade.data"
+                                       name="data"
+                                       ng-required="true">
+
+                                <div ng-messages="formIndex.endereco.$error"
+                                     ng-if="formIndex.data.$invalid && formIndex.data.$touched">
+                                    <div ng-messages-include="app/templates/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <buttom class="btn btn-primary" ng-click="salvar()">Salvar</buttom>
+                    <buttom class="btn btn-warning" ng-click="limpar()">Limpar</buttom>
+                </div>
+
+            </div>
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <label>Registros de Pessoas</label>
+                </div>
+
+                <table class="table">
+
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Sexo</th>
+                        <th>data</th>
+                        <th>Ações</th>
+                    </tr>
+
+                    <tr ng-repeat="ent in listaDePessoas">
+
+                        <td ng-bind="::ent.nome"></td>
+                        <td ng-bind="::ent.sobrenome"></td>
+                        <td ng-bind="::ent.sexo"></td>
+                        <td ng-bind="::ent.data | date : 'dd/MM/yyyy'"></td>
+                        <td>
+                            <buttom class="btn btn-primary" ng-click="editar(ent)">Editar</buttom>
+                            <buttom class="btn btn-danger" ng-click="excluir($index)">Excluir</buttom>
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

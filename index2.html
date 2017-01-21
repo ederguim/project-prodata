@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+
+    <script src="node_modules/angular/angular.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index-controller.js"></script>
+
+</head>
+<body ng-app="pdProject" class="container">
+
+<div ng-controller="IndexController">
+
+    <div class="row">
+
+        <h1>Formulario</h1>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label>Cadastro de Pessoas</label>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" ng-model="entidade.nome">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sobrenome</label>
+                            <input type="text" class="form-control" ng-model="entidade.sobrenome">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sexo</label>
+                            <select class="form-control" ng-model="entidade.sexo">
+                                <option ng-selected="true" value="">Selecione</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Endereço</label>
+                            <input type="text" class="form-control" ng-model="entidade.endereco">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <buttom class="btn btn-primary" ng-click="salvar()">Salvar</buttom>
+                <buttom class="btn btn-warning" ng-click="limpar()">Limpar</buttom>
+                <buttom class="btn btn-danger" ng-click="excluir()">Excluir</buttom>
+            </div>
+
+        </div>
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <label>Registros de Pessoas</label>
+            </div>
+
+            <table class="table">
+
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Sexo</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+
+                <tr ng-repeat="ent in listaDePessoas">
+
+                    <td ng-bind="::ent.nome"></td>
+                    <td ng-bind="::ent.sobrenome"></td>
+                    <td ng-bind="::ent.sexo"></td>
+                    <td ng-bind="::ent.endereco"></td>
+                    <td>
+                        <buttom class="btn btn-primary" ng-click="editar(ent)">Editar</buttom>
+                        <buttom class="btn btn-danger" ng-click="excluir($index)">Excluir</buttom>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

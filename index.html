@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- imports externos -->
+    <script src="node_modules/angular/angular.js"></script>
+
+    <!-- fim imports externos -->
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index-controller.js"></script>
+
+</head>
+<body ng-app="pdProject">
+
+<div ng-controller="IndexController">
+
+    <h2 ng-bind="nome"></h2>
+    <button ng-click="onClickBotao()">teste</button>
+
+</div>
+
+</body>
+</html>
