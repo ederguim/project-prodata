@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index-controller.angular-material.js"></script>
+    <script src="app/services/pd-alert.service.js"></script>
+
+    <script src="app/filter/pd-filter.js"></script>
+
+</head>
+<body ng-app="pdProject" class="container" md-theme="blue">
+
+<div ng-controller="IndexController">
+
+    <form name="formIndex">
+
+        <div class="row">
+
+            <h1>Formulario</h1>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label>Cadastro de Pessoas</label>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <md-input-container>
+                                <label>Nome</label>
+                                <input ng-model="entidade.nome" type="text">
+                            </md-input-container>
+                        </div>
+                        <div class="col-md-3">
+                            <md-input-container>
+                                <label>Sobrenome</label>
+                                <input ng-model="entidade.sobrenome" type="text">
+                            </md-input-container>
+                        </div>
+                        <div class="col-md-3">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Sexo</label>
+                                <md-select ng-model="entidade.sexo">
+                                    <md-option ng-selected="true" value="">Selecione</md-option>
+                                    <md-option value="M">Masculino</md-option>
+                                    <md-option value="F">Feminino</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+
+                        <div class="col-md-3">
+                            <md-input-container>
+                                <label>Data</label>
+                                <md-datepicker ng-model="entidade.nascimento"></md-datepicker>
+                            </md-input-container>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-3">
+                                <md-input-container>
+                                    <label>Cor</label>
+                                    <input ng-model="entidade.cor" type="text">
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+
+                    <md-button class="md-raised md-primary" ng-click="salvar()">Salvar</md-button>
+
+                    <md-button class="md-raised md-warn" ng-click="limpar()">Limpar</md-button>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label>Cadastro de Pessoas</label>
+                </div>
+
+                <div ui-grid="gridOptions"></div>
+            </div>
+
+        </div>
+    </form>
+
+
+</div>
+
+</body>
+</html>
