@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-messages/angular-messages.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
     <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
 
     <script src="app/config/pd-app.js"></script>
-    <script src="app/controller/index-controller.js"></script>
+    <script src="app/controller/index-controller.ui-grid.js"></script>
     <script src="app/services/pd-alert.service.js"></script>
 
     <script src="app/filter/pd-filter.js"></script>
@@ -34,7 +36,7 @@
 
             <h1>Formulario</h1>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <label>Cadastro de Pessoas</label>
                 </div>
@@ -97,20 +99,32 @@
 
                         <div class="col-md-3">
                             <div class="form-group"
-                                 ng-class="{'has-error' : formIndex.data.$invalid && formIndex.data.$touched}">
+                                 ng-class="{'has-error' : formIndex.nascimento.$invalid && formIndex.nascimento.$touched}">
 
-                                <label class="control-label">Endereço</label>
+                                <label class="control-label">Data</label>
 
                                 <input type="date"
                                        class="form-control"
-                                       ng-model="entidade.data"
-                                       name="data"
+                                       ng-model="entidade.nascimento"
+                                       name="nascimento"
                                        ng-required="true">
 
-                                <div ng-messages="formIndex.endereco.$error"
-                                     ng-if="formIndex.data.$invalid && formIndex.data.$touched">
+                                <div ng-messages="formIndex.nascimento.$error"
+                                     ng-if="formIndex.nascimento.$invalid && formIndex.nascimento.$touched">
                                     <div ng-messages-include="app/templates/messages.html"></div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label>Cor</label>
+
+                                <input
+                                       class="form-control"
+                                       ng-model="entidade.cor"
+                                >
                             </div>
                         </div>
 
@@ -128,51 +142,17 @@
                         Limpar
                     </buttom>
                 </div>
-
             </div>
 
-            <div class="panel panel-primary">
-
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <label>Registros de Pessoas</label>
+                    <label>Cadastro de Pessoas</label>
                 </div>
 
-                <table class="table">
-
-                    <tr>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Sexo</th>
-                        <th>data</th>
-                        <th>Ações</th>
-                    </tr>
-
-                    <tr ng-repeat="ent in listaDePessoas">
-
-                        <td ng-bind="::ent.nome | maiusculo"></td>
-                        <td ng-bind="::ent.sobrenome  | maiusculo"></td>
-                        <td ng-bind="::ent.sexo  | maiusculo"></td>
-                        <td ng-bind="::ent.data | date : 'dd/MM/yyyy'"></td>
-                        <td>
-                            <buttom class="btn btn-primary" ng-click="editar(ent)">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Editar
-                            </buttom>
-                            <buttom class="btn btn-danger" ng-click="excluir($index)">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                                Excluir
-                            </buttom>
-                        </td>
-
-                    </tr>
-
-                </table>
-
+                <div ui-grid="gridOptions"></div>
             </div>
 
-
         </div>
-
     </form>
 </div>
 

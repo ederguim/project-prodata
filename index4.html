@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .div1 {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+
+        .div2 {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+        }
+
+        .div3 {
+            width: 150px;
+            height: 150px;
+            background-color: black;
+        }
+
+
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index2-controller.js"></script>
+    <script src="app/services/pd-alert.service.js"></script>
+
+    <script src="app/filter/pd-filter.js"></script>
+
+</head>
+<body ng-app="pdProject" class="container">
+
+<div ng-controller="IndexController">
+
+    <input ng-model="cor">
+
+    <div ng-style="cssDaDiv"></div>
+
+    <div ng-class="classCss"></div>
+
+    <div ng-class="{'div2' : cor === '1'}"></div>
+
+</div>
+
+</body>
+</html>

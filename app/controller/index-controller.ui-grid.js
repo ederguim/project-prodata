@@ -11,6 +11,7 @@ function IndexController($scope, pdAlertService) {
     $scope.limpar = limpar;
     $scope.editar = editar;
     $scope.excluir = excluir;
+    $scope.getStyleLinha = getStyleLinha;
 
     function salvar() {
         if ($scope.formIndex.$invalid) {
@@ -40,5 +41,28 @@ function IndexController($scope, pdAlertService) {
     function excluir(index) {
         $scope.listaDePessoas.splice(index);
     }
+
+    function  getStyleLinha(linhaSelect) {
+        var style = {};
+         if (linhaSelect.cor) {
+            style.backgroundColor = linhaSelect.cor;
+         }
+
+         return style;
+    }
+
+    $scope.gridOptions = {
+        data: 'listaDePessoas',
+        enableColumnMenu: false,
+        enableRowSelection: true,
+        rowTemplate: 'app/templates/row-template.html',
+        columnDefs: [
+            {name: 'Nome', field: 'nome'},
+            {name: 'Sobrenome', field: 'sobrenome'},
+            {name: 'Sexo', field: 'sexo'},
+            {name: 'Nascimento', field: 'nascimento', cellTemplate: 'app/templates/template-date.html'},
+            {name: 'Ações', cellTemplate: 'app/templates/template-grid-acao.html', onclickEx:excluir, onclickEd:editar}
+        ]
+    };
 }
 

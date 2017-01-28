@@ -1,2 +1,2 @@
 
-angular.module("pdProject", ['ngMessages', 'ngAnimate', 'toastr']);
+angular.module("pdProject", ['ngMessages', 'ngAnimate', 'toastr', 'ui.grid', 'ui.grid.selection']);
