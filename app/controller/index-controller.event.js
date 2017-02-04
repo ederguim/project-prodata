@@ -1,19 +1,28 @@
-angular.module("pdProject").controller('IndexController', IndexController);
+(function () {
+    'use strict';
 
-IndexController.$inject = ['$scope', '$rootScope', 'pdAlertService'];
+    angular
+        .module('pdProject')
+        .controller('IndexController', IndexController);
 
-function IndexController($scope, $rootScope, pdAlertService) {
+    IndexController.$inject = ['$scope', '$rootScope', 'pdAlertService'];
 
-    $scope.diparaEvent = diparaEvent;
+    /* @ngInject */
+    function IndexController($scope, $rootScope, pdAlertService) {
+        var vm = this;
+        vm.diparaEvent = diparaEvent;
 
-    $scope.$on('onEventTest', onEventTest);
+        $scope.$on('onEventTest', onEventTest);
 
-    function onEventTest(event, data) {
-        pdAlertService.showError('Objeto do evento = ' + data, 'Ok');
+        function onEventTest(event, data) {
+            pdAlertService.showError('Objeto do evento = ' + data, 'Ok');
+        }
+
+        function diparaEvent() {
+            $scope.$emit('onEventTest', 'teste');
+        }
     }
 
-    function diparaEvent() {
-        $scope.$emit('onEventTest', 'teste');
-    }
-}
+})();
+
 

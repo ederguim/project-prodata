@@ -1,68 +1,76 @@
-angular.module("pdProject").controller('IndexController', IndexController);
+(function () {
+    'use strict';
 
-IndexController.$inject = ['$scope', 'pdAlertService'];
+    angular.module('pdProject').controller('IndexController', IndexController);
 
-function IndexController($scope, pdAlertService) {
+    IndexController.$inject = ['$scope', 'pdAlertService'];
 
-    $scope.entidade = {};
-    $scope.listaDePessoas = [];
+    function IndexController($scope, pdAlertService) {
 
-    $scope.salvar = salvar;
-    $scope.limpar = limpar;
-    $scope.editar = editar;
-    $scope.excluir = excluir;
-    $scope.getStyleLinha = getStyleLinha;
+        $scope.entidade = {};
+        $scope.listaDePessoas = [];
 
-    function salvar() {
-        if ($scope.formIndex.$invalid) {
+        $scope.salvar = salvar;
+        $scope.limpar = limpar;
+        $scope.editar = editar;
+        $scope.excluir = excluir;
+        $scope.getStyleLinha = getStyleLinha;
 
-            angular.forEach($scope.formIndex.$error, function (errorField) {
-                for (var i = 0; i < errorField.length; i++){
-                    errorField[i].$setTouched();
-                }
-            });
-            pdAlertService.showError('Campos obrigatorios não preenchidos');
-            return;
-        }
+        function salvar() {
+            if ($scope.formIndex.$invalid) {
+
+                angular.forEach($scope.formIndex.$error, function (errorField) {
+                    for (var i = 0; i < errorField.length; i++) {
+                        errorField[i].$setTouched();
+                    }
+                });
+                pdAlertService.showError('Campos obrigatorios não preenchidos');
+                return;
+            }
             $scope.listaDePessoas.push($scope.entidade);
             limpar();
             pdAlertService.showSuccess('Cadastro realizado com sucesso');
+        }
+
+        function limpar() {
+            $scope.entidade = {};
+            angular.element('#itNome').focus();
+        }
+
+        function editar(ent) {
+            $scope.entidade = ent;
+        }
+
+        function excluir(index) {
+            $scope.listaDePessoas.splice(index);
+        }
+
+        function getStyleLinha(linhaSelect) {
+            var style = {};
+            if (linhaSelect.cor) {
+                style.backgroundColor = linhaSelect.cor;
+            }
+
+            return style;
+        }
+
+        $scope.gridOptions = {
+            data: 'listaDePessoas',
+            enableColumnMenu: false,
+            enableRowSelection: true,
+            rowTemplate: 'app/templates/row-template.html',
+            columnDefs: [
+                {name: 'Nome', field: 'nome'},
+                {name: 'Sobrenome', field: 'sobrenome'},
+                {name: 'Sexo', field: 'sexo'},
+                {name: 'Nascimento', field: 'nascimento', cellTemplate: 'app/templates/template-date.html'},
+                {
+                    name: 'Ações',
+                    cellTemplate: 'app/templates/template-grid-acao.html',
+                    onclickEx: excluir,
+                    onclickEd: editar
+                }
+            ]
+        };
     }
-
-    function limpar() {
-        $scope.entidade = {};
-        angular.element('#itNome').focus();
-    }
-
-    function editar(ent) {
-        $scope.entidade = ent;
-    }
-
-    function excluir(index) {
-        $scope.listaDePessoas.splice(index);
-    }
-
-    function  getStyleLinha(linhaSelect) {
-        var style = {};
-         if (linhaSelect.cor) {
-            style.backgroundColor = linhaSelect.cor;
-         }
-
-         return style;
-    }
-
-    $scope.gridOptions = {
-        data: 'listaDePessoas',
-        enableColumnMenu: false,
-        enableRowSelection: true,
-        rowTemplate: 'app/templates/row-template.html',
-        columnDefs: [
-            {name: 'Nome', field: 'nome'},
-            {name: 'Sobrenome', field: 'sobrenome'},
-            {name: 'Sexo', field: 'sexo'},
-            {name: 'Nascimento', field: 'nascimento', cellTemplate: 'app/templates/template-date.html'},
-            {name: 'Ações', cellTemplate: 'app/templates/template-grid-acao.html', onclickEx:excluir, onclickEd:editar}
-        ]
-    };
-}
-
+})();

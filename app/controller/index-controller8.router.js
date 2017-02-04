@@ -1,14 +1,23 @@
-angular.module("pdProject").controller('IndexController', IndexController);
+(function () {
+    'use strict';
 
-IndexController.$inject = ['$scope', '$state'];
+    angular
+        .module('pdProject')
+        .controller('IndexController', IndexController);
 
-function IndexController($scope, $state) {
+    IndexController.$inject = ['$state'];
 
-    $scope.alterarRota = alterarRota;
+    /* @ngInject */
+    function IndexController($state) {
+        var vm = this;
+        vm.alterarRota = alterarRota;
 
-    function alterarRota(state) {
-        $state.go(state);
+        function alterarRota(state) {
+            $state.go(state);
+        }
     }
 
-}
+})();
+
+
 

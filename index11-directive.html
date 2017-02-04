@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.css">
+
+    <link rel="stylesheet" href="app/css/style.css">
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
@@ -25,33 +28,58 @@
     <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
 
     <script src="app/config/pd-app.js"></script>
     <script src="app/config/pd-app.route.js"></script>
 
-    <script src="app/views/carro/cadastro-carro-controller.js"></script>
+    <script src="app/controller/index-controller11.directive.js"></script>
     <script src="app/services/pd-alert.service.js"></script>
 
     <script src="app/filter/pd-filter.js"></script>
 
+    <script src="app/arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="app/arquitetura/directives/pd-input-text/pd-input-text.directive.js"></script>
+
 </head>
-<body ng-app="pdProject" class="container" ng-controller="CadastroCarroController">
+<body ng-app="pdProject" class="container" ng-controller="IndexDirectiveController as vm">
 
 <div class="row">
-    <div class="col-md-6">
-        <div ui-sref="cadastroCarro"><a><h1>Cadastro</h1></a></div>
-        <button class="btn btn-primary" ng-click="alterarRota('cadastroCarro')"><h1>Cadastro</h1></button>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <label>Directive Hello World</label>
+        </div>
+
+        <div class="panel-body">
+
+            <pd-hello-world></pd-hello-world>
+
+        </div>
+
     </div>
-    <div class="col-md-6">
-        <div ui-sref="pesquisaCarro"><a><h1>Pesquisa</h1></a></div>
-        <button class="btn btn-danger" ng-click="alterarRota('pesquisaCarro')"><h1>Pesquisa</h1></button>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <label>Directive Input</label>
+        </div>
+
+        <div class="panel-body">
+
+            <pd-input-text label="Nome:" colspan="9" ng-model="vm.entidade.nome" ng-required="true"></pd-input-text>
+            <pd-input-text label="Sobrenome:" colspan="2" ng-model="vm.entidade.sobrenome" ng-required="true"></pd-input-text>
+            <pd-input-text label="Teste:" colspan="1" ng-model="vm.entidade.teste" ng-required="true"></pd-input-text>
+
+            {{vm.entidade.nome}}
+            {{vm.entidade.sobrenome}}
+            {{vm.entidade.teste}}
+
+        </div>
+
     </div>
-</div>
+
 </div>
 
-
-<div>
-    <div ui-view></div>
 </div>
 
 

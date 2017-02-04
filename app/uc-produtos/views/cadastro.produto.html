@@ -1,0 +1,41 @@
+
+<div ng-controller="ProdutoCadastroController as vm">
+
+    <div class="row">
+
+        <h1>Formulario</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Cadastro de Produtos</label>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label>Descricao</label>
+                            <input ng-model="vm.produto.descricao" type="text">
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label>Quantidade</label>
+                            <input ng-model="vm.produto.quantidade" type="text">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+
+                    <md-button class="md-raised md-primary" ng-click="vm.salvar()">Salvar</md-button>
+
+                    <md-button class="md-raised md-warn" ng-click="vm.limpar()">Limpar</md-button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

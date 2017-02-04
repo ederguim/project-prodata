@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.css">
+
+    <link rel="stylesheet" href="app/css/style.css">
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
@@ -25,33 +28,28 @@
     <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
 
     <script src="app/config/pd-app.js"></script>
     <script src="app/config/pd-app.route.js"></script>
 
-    <script src="app/views/carro/cadastro-carro-controller.js"></script>
+    <script src="app/controller/index-controller10.http.js"></script>
     <script src="app/services/pd-alert.service.js"></script>
 
     <script src="app/filter/pd-filter.js"></script>
 
 </head>
-<body ng-app="pdProject" class="container" ng-controller="CadastroCarroController">
+<body ng-app="pdProject" class="container" ng-controller="IndexHttpController as vm">
 
-<div class="row">
-    <div class="col-md-6">
-        <div ui-sref="cadastroCarro"><a><h1>Cadastro</h1></a></div>
-        <button class="btn btn-primary" ng-click="alterarRota('cadastroCarro')"><h1>Cadastro</h1></button>
+<div class="panel panel-default">
+
+    <button class="btn btn-primary" ng-disabled="vm.isBtnDisabled" ng-click="vm.carregarListaDados()">Carregar</button>
+
+    <div class="panel-heading">
+        <label>Registro de produtos</label>
     </div>
-    <div class="col-md-6">
-        <div ui-sref="pesquisaCarro"><a><h1>Pesquisa</h1></a></div>
-        <button class="btn btn-danger" ng-click="alterarRota('pesquisaCarro')"><h1>Pesquisa</h1></button>
-    </div>
-</div>
-</div>
 
-
-<div>
-    <div ui-view></div>
+    <div ui-grid="vm.gridOptions"></div>
 </div>
 
 

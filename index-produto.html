@@ -27,33 +27,29 @@
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
 
     <script src="app/config/pd-app.js"></script>
-    <script src="app/config/pd-app.route.js"></script>
+    <script src="app/config/pd-app.produto.route.js"></script>
 
-    <script src="app/views/carro/cadastro-carro-controller.js"></script>
+    <script src="app/uc-produtos/controller/controller.cadastro.produto.js"></script>
+    <script src="app/uc-produtos/controller/controller.pesquisa.produto.js"></script>
     <script src="app/services/pd-alert.service.js"></script>
 
     <script src="app/filter/pd-filter.js"></script>
 
 </head>
-<body ng-app="pdProject" class="container" ng-controller="CadastroCarroController">
+<body ng-app="pdProject" class="container" ng-controller="ProdutoPesquisaController">
 
 <div class="row">
     <div class="col-md-6">
-        <div ui-sref="cadastroCarro"><a><h1>Cadastro</h1></a></div>
-        <button class="btn btn-primary" ng-click="alterarRota('cadastroCarro')"><h1>Cadastro</h1></button>
+        <div ui-sref="cadastroProduto"><a><h1>Cadastro</h1></a></div>
     </div>
     <div class="col-md-6">
-        <div ui-sref="pesquisaCarro"><a><h1>Pesquisa</h1></a></div>
-        <button class="btn btn-danger" ng-click="alterarRota('pesquisaCarro')"><h1>Pesquisa</h1></button>
+        <div ui-sref="pesquisaProduto"><a><h1>Pesquisa</h1></a></div>
     </div>
 </div>
-</div>
-
 
 <div>
     <div ui-view></div>
 </div>
-
 
 </body>
 </html>

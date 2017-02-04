@@ -1,11 +1,21 @@
-angular.module('pdProject').filter('maiusculo', maiusculo);
+(function () {
+    'use strict';
 
-function maiusculo() {
-    return function (input) {
-        if (!input) {
-            return '';
+    angular
+        .module('pdProject')
+        .filter('maiusculo', maiusculo);
+
+    function maiusculo() {
+        return fitlerMaiusculo;
+
+        function fitlerMaiusculo(input) {
+            if (!input) {
+                return '';
+            }
+
+            return input.toUpperCase();
         }
-
-        return input.toUpperCase();
     }
-}
+
+})();
+

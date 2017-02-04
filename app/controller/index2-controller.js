@@ -1,27 +1,31 @@
-angular.module("pdProject").controller('IndexController', IndexController);
+(function () {
+    'use strict';
 
-function IndexController($scope) {
+    angular.module('pdProject').controller('IndexController', IndexController);
 
-    $scope.$watch('cor', onWatchCor);
+    function IndexController($scope) {
 
-    $scope.cssDaDiv = {}
-    $scope.cssDaDiv.width = '150px';
-    $scope.cssDaDiv.height = '150px';
+        $scope.$watch('cor', onWatchCor);
 
-    $scope.classCss = '';
+        $scope.cssDaDiv = {};
+        $scope.cssDaDiv.width = '150px';
+        $scope.cssDaDiv.height = '150px';
+
+        $scope.classCss = '';
 
 
-    function onWatchCor(newValue, oldValue) {
-        if (newValue === oldValue) {
-            return;
-        }
-        $scope.cssDaDiv.backgroundColor = newValue;
+        function onWatchCor(newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+            $scope.cssDaDiv.backgroundColor = newValue;
 
-        if (newValue.toString() === '1') {
-            $scope.classCss = 'div1';
-        } else if (newValue.toString() === '2') {
-            $scope.classCss = 'div2 div3';
+            if (newValue.toString() === '1') {
+                $scope.classCss = 'div1';
+            } else if (newValue.toString() === '2') {
+                $scope.classCss = 'div2 div3';
+            }
         }
     }
-}
+})();
 

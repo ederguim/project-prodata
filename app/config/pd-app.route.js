@@ -1,30 +1,34 @@
-angular.module('pdProject').config(config);
+(function () {
+    'use strict';
 
-function config($stateProvider) {
+    angular.module('pdProject').config(config);
 
-    const cadastroCarro = {
-        name: 'cadastroCarro',
-        url: '/cadastro-carro',
-        templateUrl: 'app/views/carro/cadastro-carro.html',
-        resolve: {
-            carregarController: function ($ocLazyLoad) {
-                $ocLazyLoad.load('app/views/carro/cadastro-carro.html')
+    function config($stateProvider) {
+
+        const cadastroCarro = {
+            name: 'cadastroCarro',
+            url: '/cadastro-carro',
+            templateUrl: 'app/views/carro/cadastro-carro.html',
+            resolve: {
+                carregarController: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('app/views/carro/cadastro-carro.html');
+                }
             }
-        }
-    };
+        };
 
-    const pesquisaCarro = {
-        name: 'pesquisaCarro',
-        url: '/pesquisa-carro',
-        templateUrl: 'app/views/carro/pesquisa-carro.html',
-        resolve: {
-            carregarController: function ($ocLazyLoad) {
-                $ocLazyLoad.load('app/views/carro/pesquisa-carro.html')
+        const pesquisaCarro = {
+            name: 'pesquisaCarro',
+            url: '/pesquisa-carro',
+            templateUrl: 'app/views/carro/pesquisa-carro.html',
+            resolve: {
+                carregarController: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('app/views/carro/pesquisa-carro.html');
+                }
             }
-        }
-    };
+        };
 
-    $stateProvider
-        .state('cadastroCarro', cadastroCarro)
-        .state('pesquisaCarro', pesquisaCarro);
-}
+        $stateProvider
+            .state('cadastroCarro', cadastroCarro)
+            .state('pesquisaCarro', pesquisaCarro);
+    }
+})();
