@@ -11,7 +11,7 @@
             templateUrl: 'app/views/carro/cadastro-carro.html',
             resolve: {
                 carregarController: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('app/views/carro/cadastro-carro.html');
+                    return $ocLazyLoad.load('app/views/carro/cadastro-carro-controller.js');
                 }
             }
         };
@@ -22,7 +22,7 @@
             templateUrl: 'app/views/carro/pesquisa-carro.html',
             resolve: {
                 carregarController: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('app/views/carro/pesquisa-carro.html');
+                    return $ocLazyLoad.load('app/views/carro/pesquisa-carro-controller.js');
                 }
             }
         };

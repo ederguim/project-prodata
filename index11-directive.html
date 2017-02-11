@@ -40,47 +40,60 @@
 
     <script src="app/arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
     <script src="app/arquitetura/directives/pd-input-text/pd-input-text.directive.js"></script>
+    <script src="app/arquitetura/directives/pd-input-select/pd-input-select.directive.js"></script>
+    <script src="app/arquitetura/directives/pd-panel/pd-panel.js"></script>
 
 </head>
 <body ng-app="pdProject" class="container" ng-controller="IndexDirectiveController as vm">
 
-<div class="row">
+<pd-panel titulo="Directive de Hello World" tipo="primary">
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <label>Directive Hello World</label>
-        </div>
+    <pd-hello-world></pd-hello-world>
+
+</pd-panel>
+
+<pd-panel titulo="Directive de Input" tipo="primary">
+
+    <form>
+
+        <pd-input-text label="Nome:" colspan="4" ng-model="vm.entidade.nome" ng-required="true"></pd-input-text>
+        <pd-input-text label="Sobrenome:" colspan="4" ng-model="vm.entidade.sobrenome"
+                       ng-required="true"></pd-input-text>
+        <pd-input-text label="Teste:" colspan="4" ng-model="vm.entidade.teste"
+                       ng-required="true"></pd-input-text>
+
+        {{vm.entidade.nome}}
+        {{vm.entidade.sobrenome}}
+        {{vm.entidade.teste}}
+
+    </form>
+
+</pd-panel>
+
+<pd-panel titulo="Directive de Select" tipo="primary">
+
+    <form>
 
         <div class="panel-body">
 
-            <pd-hello-world></pd-hello-world>
+            <pd-input-select label="Sexo 1" colspan="4" ng-model="vm.entidade.sexo"
+                             provider="vm.lista"></pd-input-select>
+            <pd-input-select label="Sexo 2" colspan="4" ng-model="vm.entidade.sexo"
+                             provider="vm.lista"></pd-input-select>
+            <pd-input-select label="Sexo 3" colspan="4" ng-model="vm.entidade.sexo"
+                             provider="vm.lista"></pd-input-select>
 
         </div>
 
-    </div>
+        {{vm.entidade.sexo}}
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <label>Directive Input</label>
-        </div>
+    </form>
 
-        <div class="panel-body">
+</pd-panel>
 
-            <pd-input-text label="Nome:" colspan="9" ng-model="vm.entidade.nome" ng-required="true"></pd-input-text>
-            <pd-input-text label="Sobrenome:" colspan="2" ng-model="vm.entidade.sobrenome" ng-required="true"></pd-input-text>
-            <pd-input-text label="Teste:" colspan="1" ng-model="vm.entidade.teste" ng-required="true"></pd-input-text>
+<pd-panel titulo="Teste" tipo="primary">
 
-            {{vm.entidade.nome}}
-            {{vm.entidade.sobrenome}}
-            {{vm.entidade.teste}}
-
-        </div>
-
-    </div>
-
-</div>
-
-</div>
+</pd-panel>
 
 
 </body>

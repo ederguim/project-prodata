@@ -15,7 +15,8 @@
             'ui.router',
             'oc.lazyLoad',
             'angular-loading-bar',
-            'pdArquitetura'
+            'pdArquitetura',
+            'LocalStorageModule'
         ]
     );
 })();

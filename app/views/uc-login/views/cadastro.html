@@ -1,0 +1,48 @@
+
+<div ng-controller="CadastroController as vm">
+
+    <div class="row">
+
+        <h1>Formulario</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Cadastro de Pessoa</label>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label>Nome</label>
+                            <input ng-model="vm.entidade.nome" type="text">
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label>User</label>
+                            <input ng-model="vm.entidade.user" type="text">
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label>Senha</label>
+                            <input ng-model="vm.entidade.senha" type="text">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="panel-footer">
+
+                    <md-button class="md-raised md-primary" ng-click="vm.salvar()">Salvar</md-button>
+
+                    <md-button class="md-raised md-warn" ng-click="vm.limpar()">Limpar</md-button>
+
+                    <md-button class="md-raised md-warn" ng-click="vm.voltar()">Voltar</md-button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

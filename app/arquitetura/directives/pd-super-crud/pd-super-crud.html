@@ -1,0 +1,17 @@
+<div class="panel" ng-class="::panelClass" ng-cloak>
+    <div class="panel-heading" ng-if="::titulo">
+        <h3 class="panel-title">{{::titulo}}</h3>
+        <div ng-transclude="header"></div>
+    </div>
+    <form novalidate name="{{formName}}">
+        <div class="panel-body">
+            <div ng-transclude="body"></div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary" ng-click="service.salvar()">Salvar</button>
+            <button class="btn btn-default" ng-click="service.limpar()">Limpar</button>
+            <button class="btn btn-danger" ng-click="service.excluir()">Excluir</button>
+            <ng-transclude ng-transclude="footer"></ng-transclude>
+        </div>
+    </form>
+</div>

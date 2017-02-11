@@ -11,48 +11,64 @@
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.css">
+
+    <link rel="stylesheet" href="app/css/style.css">
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-messages/angular-messages.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
     <script src="node_modules/angular-aria/angular-aria.js"></script>
-    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
 
     <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
     <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
 
     <script src="app/config/pd-app.js"></script>
-    <script src="app/config/pd-app.produto.route.js"></script>
+    <script src="app/config/pd-app.route.js"></script>
 
+    <script src="app/controller/index-controller11.directive.js"></script>
     <script src="app/services/pd-alert.service.js"></script>
+    <script src="app/services/pd-storage-service.js"></script>
 
     <script src="app/filter/pd-filter.js"></script>
 
     <script src="app/arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
     <script src="app/arquitetura/directives/pd-input-text/pd-input-text.directive.js"></script>
     <script src="app/arquitetura/directives/pd-input-select/pd-input-select.directive.js"></script>
+    <script src="app/arquitetura/directives/pd-panel/pd-panel.js"></script>
+    <script src="app/arquitetura/directives/pd-crud/pd-crud.js"></script>
 
 </head>
-<body ng-app="pdProject" class="container">
+<body ng-app="pdProject" class="container" ng-controller="IndexDirectiveController as vm">
 
-<div class="row">
-    <div class="col-md-6">
-        <div ui-sref="cadastroProduto"><a><h1>Cadastro</h1></a></div>
-    </div>
-    <div class="col-md-6">
-        <div ui-sref="pesquisaProduto"><a><h1>Pesquisa</h1></a></div>
-    </div>
-</div>
+<pd-crud titulo="Directive de Crud" tipo="primary" salvar="vm.salvar()" limpar="vm.limpar()"
+         excluir="vm.excluir()" ng-cloak>
 
-<div>
-    <div ui-view></div>
-</div>
+    <pd-crud-body>
+
+        <pd-input-text label="Nome:" colspan="4" ng-model="vm.entidade.nome" ng-required="true"></pd-input-text>
+        <pd-input-text label="Sobrenome:" colspan="4" ng-model="vm.entidade.sobrenome"
+                       ng-required="true"></pd-input-text>
+        <pd-input-text label="Teste:" colspan="4" ng-model="vm.entidade.teste"
+                       ng-required="true"></pd-input-text>
+
+    </pd-crud-body>
+
+    <pd-crud-footer>
+        <button class="btn btn-primary" ng-click="salvar()">Imprimir</button>
+    </pd-crud-footer>
+
+
+</pd-crud>
+
 
 </body>
 </html>

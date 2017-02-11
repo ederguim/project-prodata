@@ -1,0 +1,23 @@
+<div ng-controller="HomeController as vm">
+
+    <div class="row">
+
+        <h1>Formulario</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Cadastro de Pessoa</label>
+                <md-button class="md-raised md-primary" ng-click="vm.logout()">Sair</md-button>
+            </div>
+
+            <div class="panel-body">
+                Nome: <label ng-bind="vm.entidade.nome"></label>
+                <br/>
+                Usuario:<label ng-bind="vm.entidade.user"></label>
+                <br/>
+                Senha:<label ng-bind="vm.entidade.senha"></label>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

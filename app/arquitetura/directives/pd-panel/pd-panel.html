@@ -1,0 +1,11 @@
+<div class="panel" ng-class="::panelClass">
+    <div class="panel-heading" ng-if="::titulo">
+        <i ng-class="::iconClass" aria-hidden="true" style="margin-right: 5px;"></i>
+        <h3 class="panel-title">{{::titulo}}</h3>
+    </div>
+    <div class="panel-body">
+        <ng-transclude>
+            <button class="btn btn-primary">teste</button>
+        </ng-transclude>
+    </div>
+</div>

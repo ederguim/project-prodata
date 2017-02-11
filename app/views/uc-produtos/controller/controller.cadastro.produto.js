@@ -32,6 +32,7 @@
             vm.produto.idProduto = 1;
             $rootScope.listaDeProdutos.push(vm.produto);
             $state.go('pesquisaProduto');
+            pdAlertService.showSuccess('Salvo com sucesso');
             limpar();
         }
 
